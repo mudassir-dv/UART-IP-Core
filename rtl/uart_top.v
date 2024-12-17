@@ -24,28 +24,28 @@ module uart_top(clk, reset, rd_uart, wr_uart, rx, tx, w_data, r_data, tx_fifo_fu
 	wire tick;
 	
 	mod_m_counter BAUD_GEN	(	.clk(clk), 
-								.reset(reset), 
-								.max_tick(tick), 
-								.q()
-							);
+					.reset(reset), 
+					.max_tick(tick), 
+					.q()
+				);
 	
 	uart_rcvr UART_RCVR	(	.clk(clk), 
-							.reset(reset), 
-							.s_tick(tick), 
-							.rx(rx), 
-							.rd_uart(rd_uart), 
-							.r_data(r_data), 
-							.rx_empty(rx_fifo_empty), 
-							.rx_full(rx_fifo_full)
-						);
+					.reset(reset), 
+					.s_tick(tick), 
+					.rx(rx), 
+					.rd_uart(rd_uart), 
+					.r_data(r_data), 
+					.rx_empty(rx_fifo_empty), 
+					.rx_full(rx_fifo_full)
+				);
 						
 	uart_txmt UART_TXMT	(	.clk(clk), 
-							.reset(reset), 
-							.s_tick(tick), 
-							.w_data(w_data), 
-							.wr_uart(wr_uart), 
-							.tx(tx), 
-							.tx_full(tx_fifo_full)
-						);
+					.reset(reset), 
+					.s_tick(tick), 
+					.w_data(w_data), 
+					.wr_uart(wr_uart), 
+					.tx(tx), 
+					.tx_full(tx_fifo_full)
+				);
 	
 endmodule
